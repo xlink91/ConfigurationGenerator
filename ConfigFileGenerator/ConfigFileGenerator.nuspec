@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ConfigFileGenerator</id>
+    <version>1.0.0</version>
+    <title>Configuration File Generator</title>
+    <authors>DHT</authors>
+    <owners>DHT</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Handling configuration files easear</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>Configuration</tags>
+    <licenseUrl>https://www.opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/xlink91/ConfigurationGenerator</projectUrl>
+    <dependencies>
+        <package id="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" version="2.0.1" />
+        <package id="Newtonsoft.Json" version="12.0.1" />
+    </dependencies>
+  </metadata>
+</package>

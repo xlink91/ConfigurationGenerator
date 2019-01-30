@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ConfigFileGenerator")]
-[assembly: AssemblyDescription("Configuration File Generator")]
+[assembly: AssemblyTitle("ConfigFileGenerator.ConfigCreator")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ConfigFileGenerator")]
+[assembly: AssemblyProduct("ConfigFileGenerator.ConfigCreator")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4e6a4ce5-79fe-46d8-ad37-3f829261163f")]
+[assembly: Guid("1a384f41-e1b9-4832-bdf6-8eaa1aed4530")]
 
 // Version information for an assembly consists of the following four values:
 //
