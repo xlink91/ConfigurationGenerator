@@ -42,4 +42,4 @@ steps:
   inputs:
     command: push
     publishVstsFeed: 'nugetWorkingV1.0Feeds'
-    allowPackageConflicts: true
+    allowPackageConflicts: false
