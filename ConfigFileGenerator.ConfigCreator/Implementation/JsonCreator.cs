@@ -21,11 +21,11 @@ namespace ConfigFileGenerator.ConfigCreator.Implementation
                 GenerateInMemory = true,
                 GenerateExecutable = false
             };
-            parameters.ReferencedAssemblies.AddRange(new[] { "System.Core.dll", "mscorlib.dll" });
+            parameters.ReferencedAssemblies.AddRange(new[] { "System.Core.dll" });
             string rs = Path.Combine(Path.Combine(path, "Schema"), @class);
             var code = Regex.Replace(Regex.Unescape(File.ReadAllText(rs)), @"\t|\n|\r", "");
             CompilerResults cresult = provider.CompileAssemblyFromSource(parameters, code);
-
+            /*
             string errorMessage = string.Empty;
             if (cresult.Errors.HasErrors)
             {
@@ -34,14 +34,13 @@ namespace ConfigFileGenerator.ConfigCreator.Implementation
                     // Display compilation errors.
                     errorMessage += Environment.NewLine + compileError.ErrorText;
                 }
-                throw new Exception(errorMessage);
             }
-
+            */
             bool gac = cresult.CompiledAssembly.GlobalAssemblyCache;
             Type type = cresult.CompiledAssembly.ExportedTypes.Where(x => x.Name == _class).First();
             var obj = Activator.CreateInstance(type);
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented);
-            File.WriteAllText(Path.Combine(Path.Combine(path, "Data"), @class.Substring(0, @class.Length - 3) + ".json"), json);
+            File.WriteAllText(Path.Combine(Path.Combine(path, "Data"), _class + ".json"), json);
         }
     }
 }

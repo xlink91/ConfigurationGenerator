@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigFileGenerator", "Conf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigFileGenerator.ConfigCreator", "ConfigFileGenerator.ConfigCreator\ConfigFileGenerator.ConfigCreator.csproj", "{1A384F41-E1B9-4832-BDF6-8EAA1AED4530}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigFileGeneratorTests", "ConfigFileGeneratorTests\ConfigFileGeneratorTests.csproj", "{2F9938FD-A7E4-4074-8B28-DDFED98BDC36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1A384F41-E1B9-4832-BDF6-8EAA1AED4530}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A384F41-E1B9-4832-BDF6-8EAA1AED4530}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A384F41-E1B9-4832-BDF6-8EAA1AED4530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F9938FD-A7E4-4074-8B28-DDFED98BDC36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F9938FD-A7E4-4074-8B28-DDFED98BDC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F9938FD-A7E4-4074-8B28-DDFED98BDC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F9938FD-A7E4-4074-8B28-DDFED98BDC36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

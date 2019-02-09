@@ -14,8 +14,15 @@
     <licenseUrl>https://www.opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/xlink91/ConfigurationGenerator</projectUrl>
     <dependencies>
-        <package id="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" version="2.0.1" />
-        <package id="Newtonsoft.Json" version="12.0.1" />
+        <dependency id="Newtonsoft.Json" version="12.0.1" />
     </dependencies>
-  </metadata>
+  </metadata>   
+  <files>
+    <file src="scripts\*.*" target="tools" />
+    <file src="ConfigFiles\" target="content\ConfigFiles" />
+    <file src="bin\Release\ConfigFileGenerator.pdb" target="lib\net461" />
+    <file src="bin\Release\ConfigFileGenerator.dll" target="lib\net461" />
+    <file src="bin\Release\*.*" target="tools" exclude="bin\Release\ConfigFileGenerator.pdb; bin\Release\ConfigFileGenerator.dll;"/>
+    <file src="bin\Release\Roslyn\*.*" target="tools\roslyn" />
+  </files>
 </package>
