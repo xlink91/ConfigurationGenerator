@@ -30,6 +30,7 @@ _Any observation or contribution will be welcome._
   public class Info
   {
       public string Name { get; set; } = "Last";
+      public Guid Guid { get; set; } = Guid.NewGuid();
   }
 ```
 
@@ -49,7 +50,8 @@ This will generate a Info.json file, as consequence your final project will look
 Info.json data:
 ```
 {
-  "Name": "Last"
+  "Name": "Last",
+  "Guid": "f61db2da-4b64-4e99-b214-889fd297ac25"
 }
 ```
 
