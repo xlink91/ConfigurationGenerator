@@ -60,4 +60,5 @@ Now if you want to get the Name Property Value you have to put in your code:
 using ConfigFileGenerator.Implementation;
 
 string name = ConfigFileGenerator.Implementation.ConfigResolver.Instance.Resolve<Info, string>(x => x.Name);
+Guid guid = ConfigFileGenerator.Implementation.ConfigResolver.Instance.Resolve<Info, Guid>(x => x.Guid);
 ```
