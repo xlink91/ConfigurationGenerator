@@ -1,5 +1,8 @@
 ﻿function New-Config($class) {
-	$path = "$(Get-Location)\$((Get-Project).ProjectName)\ConfigFiles"
+	$sp = $(Get-Project).FullName;
+	$idx = $sp.LastIndexOf('\');
+	$prefixPath = $sp.Substring(0, $idx);
+	$path = "$prefixPath\ConfigFiles"
 	Start-Process "ConfigFileGenerator.ConfigCreator.exe" -arg "$path $class" -WindowStyle Hidden -Wait
 	$pathConf = "$path\Data\$class.json"
 	$prj = $(Get-Project)
@@ -10,4 +13,4 @@
 	$copyToOutput.Value = 2
 }
 
-Export-ModuleMember @( 'New-Config' )
+Export-ModuleMember @( 'New-Config' )	
