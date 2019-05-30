@@ -1,10 +1,7 @@
 ﻿using ConfigFileGenerator.ConfigCreator.Implementation;
 using System;
-using System.CodeDom.Compiler;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace ConfigFileGenerator.ConfigCreator
 {
@@ -12,6 +9,10 @@ namespace ConfigFileGenerator.ConfigCreator
     {
         static void Main(string[] args)
         {
+//#if DEBUG
+//            string pathBase = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\"));
+//            args = new[] { Path.Combine(pathBase, "ConfigFiles"), "Info"};
+//#endif
             string key = "aspnet:RoslynCompilerLocation";
             string value = Path.Combine(AppContext.BaseDirectory, "roslyn");
             if (ConfigurationManager.AppSettings[key] != value)

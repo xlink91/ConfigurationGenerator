@@ -17,27 +17,29 @@ namespace ConfigFileGenerator.Implementation.Tests
         [TestInitialize]
         public void PutConfigFile()
         {
-            if(!System.IO.File.Exists(@"ConfigFiles\Schema\Information.cs"))
-                System.IO.File.Copy(@"..\..\CustomTypes\Information.cs", @"ConfigFiles\Schema\Information.cs", false);
-            if (System.IO.File.Exists(@"ConfigFiles\Data\Information.json"))
-                return;
-
             ProcessStartInfo pInfo = new ProcessStartInfo
             {
                 FileName = "ConfigFileGenerator.ConfigCreator.exe",
                 CreateNoWindow = true,
                 UseShellExecute = false,
-                Arguments = $"ConfigFiles {nameof(Information)}"
+                Arguments = $@"ConfigFiles {nameof(Information)}"
             };
             Process process = Process.Start(pInfo);
             process.WaitForExit();
         }
 
-        [TestMethod()]
-        public void ResolveTest()
+        [TestMethod]
+        public void Resolve_SpecifyProperty_Success_Test()
         {
             Guid guid = ConfigResolver.Instance.Resolve<Information, Guid>(x => x.Guid);
             Assert.AreEqual(guid.ToString().ToUpper(), "087D3AD4-7F5D-457B-A16C-9D402D22B2E6");
+        }
+
+        [TestMethod]
+        public void Resolve_FullEntity_Success_Test()
+        {
+            Information information = ConfigResolver.Instance.Resolve<Information>();
+            Assert.AreEqual(information.Guid.ToString().ToUpper(), "087D3AD4-7F5D-457B-A16C-9D402D22B2E6");
         }
     }
 }
