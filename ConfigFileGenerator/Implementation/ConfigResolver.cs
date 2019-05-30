@@ -1,7 +1,9 @@
 ﻿using ConfigFileGenerator.Contract;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq.Expressions;
+using System.Web;
 
 namespace ConfigFileGenerator.Implementation
 {
@@ -33,16 +35,37 @@ namespace ConfigFileGenerator.Implementation
         
         private TEntity LoadConfigFile<TEntity>(string className)
         {
-            TEntity entity = Newtonsoft.Json.JsonConvert.DeserializeObject<TEntity>(System.IO.File.ReadAllText($"ConfigFiles/Data/{className}.json"));
+            string jsonStr = string.Empty;
+            if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"ConfigFiles/Data/{className}.json")))
+                jsonStr = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"ConfigFiles/Data/{className}.json"));
+            else
+                jsonStr = File.ReadAllText(Path.Combine(HttpRuntime.AppDomainAppPath, $"ConfigFiles/Data/{className}.json"));
+            TEntity entity = Newtonsoft.Json.JsonConvert.DeserializeObject<TEntity>(jsonStr);
             return entity;
         }
 
-        public TResult Resolve<TEntity, TResult>(Expression<Func<TEntity, TResult>> member)
+        public TEntity CheckCache<TEntity>()
+            where TEntity : class
         {
             string className = typeof(TEntity).Name;
             if (!confObjects.ContainsKey(className))
                 confObjects.Add(className, LoadConfigFile<TEntity>(className));
-            return (TResult)member.Compile().DynamicInvoke(confObjects[className]);
+            return (TEntity)confObjects[className];
+        }
+
+        public TResult Resolve<TEntity, TResult>(Expression<Func<TEntity, TResult>> member)
+            where TEntity : class
+        {
+            string className = typeof(TEntity).Name;
+            TEntity entity = CheckCache<TEntity>();
+            return (TResult)member.Compile().DynamicInvoke(entity);
+        }
+
+        public TEntity Resolve<TEntity>()
+            where TEntity : class
+        {
+            string className = typeof(TEntity).Name;
+            return CheckCache<TEntity>();
         }
     }
 }

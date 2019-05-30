@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ConfigFileGenerator</id>
-    <version>1.0.3</version>
+    <version>1.1.4</version>
     <title>Configuration File Generator</title>
     <authors>DHT</authors>
     <owners>DHT</owners>
