@@ -62,7 +62,7 @@ using ConfigFileGenerator.Implementation;
 string name = ConfigFileGenerator.Implementation.ConfigResolver.Instance.Resolve<Info, string>(x => x.Name);
 Guid guid = ConfigFileGenerator.Implementation.ConfigResolver.Instance.Resolve<Info, Guid>(x => x.Guid);
 ```
-If you want to retrieve the whole entity use instead:
+If you want to retrieve the whole entity then, use instead:
 ```
 Info info = ConfigFileGenerator.Implementation.ConfigResolver.Instance.Resolve<Info>();
 ```
