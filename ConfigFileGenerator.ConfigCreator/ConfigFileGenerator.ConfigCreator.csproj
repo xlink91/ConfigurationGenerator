@@ -40,7 +40,7 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -61,10 +61,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ConfigFiles\Data\" />
-    <Folder Include="ConfigFiles\Schema\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -73,6 +70,13 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)bin\Release" "$(SolutionDir)ConfigFileGenerator\tools" /Y /I /E</PostBuildEvent>
+    <PostBuildEvent>IF ($(ConfigurationName)) == (Release) GOTO RELEASE
+    XCOPY "$(ProjectDir)bin\Debug" "$(SolutionDir)ConfigFileGenerator\tools" /Y /I /E
+    XCOPY "$(ProjectDir)bin\Debug" "$(SolutionDir)ConfigFileGeneratorTests\bin\Debug" /Y /I /E
+    GOTO END
+:RELEASE
+    XCOPY "$(ProjectDir)bin\Release" "$(SolutionDir)ConfigFileGenerator\tools" /Y /I /E
+    XCOPY "$(ProjectDir)bin\Release" "$(SolutionDir)ConfigFileGeneratorTests\bin\Release" /Y /I /E
+:END</PostBuildEvent>
   </PropertyGroup>
 </Project>
