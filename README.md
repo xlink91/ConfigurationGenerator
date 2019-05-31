@@ -66,3 +66,4 @@ If you want to retrieve the whole entity then, use instead:
 ```
 Info info = ConfigFileGenerator.Implementation.ConfigResolver.Instance.Resolve<Info>();
 ```
+In case of using with Web Applications you most move the ConfigFiles/Data folder structure at the same level of bin folder.
