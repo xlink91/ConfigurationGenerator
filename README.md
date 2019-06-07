@@ -13,9 +13,7 @@ Once installed the ConfigurationGenerator.nupkg will be added two folder to your
 ```
 You most create your configuration class ClassName.cs inside Schema folder, once there your go to Package Manager Console and type 
 New-Config ClassName, this will generate ClassName.json file inside Data Folder. Now you can call ConfigResolver singleton class to 
-retrieve the property wished from the given class.
-
-_Any observation or contribution will be welcome._
+retrieve the property wished from the given class or load into memory the whole object.
 ***
 
 ### ConfigurationGenerator Usage Example
@@ -34,7 +32,7 @@ _Any observation or contribution will be welcome._
   }
 ```
 
-Now you go to Package Manager Console and type:
+Now you go to Package Manager Console, select the project in which you installed the package and type:
 ```
 New-Config Info
 ```
