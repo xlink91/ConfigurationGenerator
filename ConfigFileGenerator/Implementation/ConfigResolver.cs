@@ -48,15 +48,20 @@ namespace ConfigFileGenerator.Implementation
             where TEntity : class
         {
             string className = typeof(TEntity).Name;
-            if (!confObjects.ContainsKey(className))
-                confObjects.Add(className, LoadConfigFile<TEntity>(className));
+            if(confObjects.ContainsKey(className))
+                return (TEntity)confObjects[className];
+
+            lock (objLock)
+            {
+                if (!confObjects.ContainsKey(className))
+                    confObjects.Add(className, LoadConfigFile<TEntity>(className));
+            }
             return (TEntity)confObjects[className];
         }
 
         public TResult Resolve<TEntity, TResult>(Expression<Func<TEntity, TResult>> member)
             where TEntity : class
         {
-            string className = typeof(TEntity).Name;
             TEntity entity = CheckCache<TEntity>();
             return (TResult)member.Compile().DynamicInvoke(entity);
         }
@@ -64,7 +69,6 @@ namespace ConfigFileGenerator.Implementation
         public TEntity Resolve<TEntity>()
             where TEntity : class
         {
-            string className = typeof(TEntity).Name;
             return CheckCache<TEntity>();
         }
     }

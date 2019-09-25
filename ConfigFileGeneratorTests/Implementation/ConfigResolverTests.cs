@@ -1,13 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ConfigFileGenerator.Implementation;
+﻿using ConfigFileGeneratorTests.CustomTypes;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using ConfigFileGeneratorTests.CustomTypes;
-using ConfigFileGenerator.Contract;
+using System.IO;
 
 namespace ConfigFileGenerator.Implementation.Tests
 {
@@ -22,7 +17,7 @@ namespace ConfigFileGenerator.Implementation.Tests
                 FileName = "ConfigFileGenerator.ConfigCreator.exe",
                 CreateNoWindow = true,
                 UseShellExecute = false,
-                Arguments = $@"ConfigFiles {nameof(Information)}"
+                Arguments = $"ConfigFiles {nameof(Information)}"
             };
             Process process = Process.Start(pInfo);
             process.WaitForExit();

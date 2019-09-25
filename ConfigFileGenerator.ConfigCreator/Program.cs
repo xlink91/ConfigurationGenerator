@@ -9,6 +9,7 @@ namespace ConfigFileGenerator.ConfigCreator
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(string.Join(" ", args));
 //#if DEBUG
 //            string pathBase = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\"));
 //            args = new[] { Path.Combine(pathBase, "ConfigFiles"), "Info"};
